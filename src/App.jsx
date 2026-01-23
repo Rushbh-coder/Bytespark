@@ -158,6 +158,7 @@ export default function App() {
               </h1>
               <div className="hidden md:flex space-x-8 text-sm font-medium">
                 <button onClick={() => setView('home')} className={view === 'home' ? 'text-indigo-600' : 'hover:text-indigo-500'}>Home</button>
+                <button onClick={() => setView('about')} className={view === 'about' ? 'text-indigo-600' : 'hover:text-indigo-500'}>Our story</button>
                 <button onClick={() => setView('products')} className={view === 'products' ? 'text-indigo-600' : 'hover:text-indigo-500'}>Shop All</button>
               </div>
             </div>
@@ -367,6 +368,142 @@ export default function App() {
               </button>
            </section>
         )}
+      {view === 'about' && (
+  <div>
+    {/* Hero Section */}
+    <section className="relative py-24 bg-indigo-950 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-3xl">
+          <h1 className="text-indigo-400 font-bold uppercase tracking-[0.3em] text-sm mb-4">
+            Our Journey
+          </h1>
+          <h2 className="text-5xl lg:text-7xl font-bold text-white leading-tight mb-8">
+            Crafting the <br />
+            <span className="text-indigo-300">Future of Flow.</span>
+          </h2>
+          <p className="text-xl text-slate-300 leading-relaxed">
+            ByteSpark started with a simple vision: to redefine how water moves through modern spaces.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Stats Section */}
+    <section className="py-20 -mt-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 lg:grid-cols-4 gap-8">
+        {[
+          { value: "12+", label: "Years Experience" },
+          { value: "500+", label: "Global Partners" },
+          { value: "1M+", label: "Items Shipped" },
+          { value: "24/7", label: "Client Support" },
+        ].map((item) => (
+          <div
+            key={item.label}
+            className="bg-white p-10 rounded-[2.5rem] shadow-xl border text-center hover:-translate-y-2 transition-all"
+          >
+            <p className="text-4xl font-bold text-indigo-600 mb-2">{item.value}</p>
+            <p className="text-sm font-bold text-slate-400 uppercase tracking-widest">
+              {item.label}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {/* Values Section */}
+    <section className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 className="text-3xl font-bold mb-4">Values that Drive Us</h2>
+        <p className="text-slate-500 mb-12">
+          Every product we engineer is rooted in our principles.
+        </p>
+
+        <div className="grid md:grid-cols-3 gap-12 text-left bg-slate-50 p-10 rounded-2xl shadow-lg">
+          <div className="bg-indigo-100 rounded-lg p-2 gap-5">
+            <ShieldCheck className="w-10 h-10 text-indigo-600 mb-4 " />
+            <h3 className="text-xl font-bold mb-2">Uncompromising Quality</h3>
+            <p className="text-slate-500 text-sm">
+              High-grade materials ensuring lifetime durability.
+            </p>
+          </div>
+
+          <div className="bg-indigo-100 rounded-lg p-2 gap-5">
+            <RotateCcw className="w-10 h-10 text-indigo-600 mb-4 bg-indigo-100 rounded-full p-2" />
+            <h3 className="text-xl font-bold mb-2">Sustainability First</h3>
+            <p className="text-slate-500 text-sm">
+              Eco-flow technology reducing water usage by 30%.
+            </p>
+          </div>
+
+          <div className="bg-indigo-100 rounded-lg p-2 gap-5">
+            <CheckCircle className="w-10 h-10 text-indigo-600 mb-4 bg-indigo-100 rounded-full p-2" />
+            <h3 className="text-xl font-bold mb-2">Client Partnership</h3>
+            <p className="text-slate-500 text-sm">
+              Custom solutions for architects and builders.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-end justify-between gap-8 mb-16">
+                <div class="max-w-xl">
+                    <h2 class="text-3xl font-bold mb-4">Our Leadership</h2>
+                    <p class="text-slate-500">Meet the visionaries behind ByteSpark's commitment to excellence and innovation in the sanitary industry.</p>
+                </div>
+                <button class="bg-white border border-slate-200 px-6 py-3 rounded-xl font-bold text-sm hover:bg-slate-100 transition-all">Join our Team</button>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+
+                <div class="group">
+                    <div class="relative rounded-3xl overflow-hidden mb-6 aspect-[4/5]">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400" alt="CEO" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"/>
+                        <div class="absolute inset-0 bg-gradient-to-t from-indigo-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+                            <div class="flex gap-4 text-white">
+                                <a href="#"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                                <a href="#"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900">David Chen</h4>
+                    <p class="text-indigo-600 font-bold text-sm">Founder & CEO</p>
+                </div>
+               
+                <div class="group">
+                    <div class="relative rounded-3xl overflow-hidden mb-6 aspect-[4/5]">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400" alt="COO" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-indigo-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+                            <div class="flex gap-4 text-white">
+                                <a href="#"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                                <a href="#"><i data-lucide="globe" class="w-5 h-5"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900">Sarah Jenkins</h4>
+                    <p class="text-indigo-600 font-bold text-sm">Head of Operations</p>
+                </div>
+                
+                <div class="group">
+                    <div class="relative rounded-3xl overflow-hidden mb-6 aspect-[4/5]">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400" alt="CTO" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"/>
+                        <div class="absolute inset-0 bg-gradient-to-t from-indigo-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+                            <div class="flex gap-4 text-white">
+                                <a href="#"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                                <a href="#"><i data-lucide="mail" class="w-5 h-5"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900">Marcus Thorne</h4>
+                    <p class="text-indigo-600 font-bold text-sm">Chief Design Officer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+  </div>
+)}
+
       </main>
 
       {/* Footer */}
