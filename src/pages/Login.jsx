@@ -41,7 +41,7 @@ const handleSubmit = async (e) => {
     const endpoint = isLogin ? "login" : "register";
 
     const response = await fetch(
-      `http://localhost:5000/api/auth/${endpoint}`,
+      `https://bytespark-backend.onrender.com/api/auth/${endpoint}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
