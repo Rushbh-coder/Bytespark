@@ -42,13 +42,14 @@ function Layout() {
         />
 
         <Route
-          path="/admin"
+          path="/admin/*"
           element={
             <ProtectedRoute role="ADMIN">
               <Adminpanel />
             </ProtectedRoute>
           }
         />
+
       </Routes>
 
       {!hideLayout && <CartDrawer />}
