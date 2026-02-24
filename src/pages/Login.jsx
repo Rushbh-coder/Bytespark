@@ -32,15 +32,94 @@ const App = () => {
 
 const { login } = useAuth();
 
+// const handleSubmit = async (e) => {
+//   e.preventDefault();
+//   setIsLoading(true);
+//   setMessage({ type: "", text: "" });
+
+//   try {
+//     const endpoint = isLogin ? "login" : "register";
+
+    
+//     const response = await fetch(
+//       `http://localhost:5000/api/auth/${endpoint}`,
+//       {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify({
+//           email: formData.email,
+//           password: formData.password,
+//           ...(isLogin ? {} : { role: formData.role.toUpperCase() }),
+//         }),
+//       }
+//     );
+
+//     const data = await response.json();
+//     if (!response.ok) throw new Error(data.message || "Access Denied");
+
+//     // ✅ THIS IS THE KEY LINE (updates Navbar instantly)
+//     login(data.token, data.user);
+
+//     setMessage({
+//       type: "success",
+//       text: "Authentication successful. Redirecting...",
+//     });
+
+//     setTimeout(() => {
+//       if (data.user.role.toUpperCase() === "ADMIN") {
+//         navigate("/admin", { replace: true });
+//       } else {
+//         navigate("/", { replace: true });
+//       }
+//     }, 300);
+
+//   } catch (err) {
+//     setMessage({ type: "error", text: err.message });
+//   } finally {
+//     setIsLoading(false);
+//   }
+// };
+
+
 const handleSubmit = async (e) => {
   e.preventDefault();
   setIsLoading(true);
   setMessage({ type: "", text: "" });
 
   try {
+    // ✅ STATIC ADMIN LOGIN (Frontend Only)
+    if (
+      isLogin &&
+      formData.email === "admin@gmail.com" &&
+      formData.password === "admin123"
+    ) {
+      const staticAdmin = {
+        _id: "static-admin-id",
+        email: "admin@gmail.com",
+        role: "ADMIN",
+      };
+
+      const fakeToken = "static-admin-token-123";
+
+      // Save to AuthContext
+      login(fakeToken, staticAdmin);
+
+      setMessage({
+        type: "success",
+        text: "Admin Login Successful. Redirecting...",
+      });
+
+      setTimeout(() => {
+        navigate("/admin", { replace: true });
+      }, 300);
+
+      setIsLoading(false);
+      return; // ⛔ stop here (don't call backend)
+    }
+
+    // 🔹 NORMAL LOGIN / REGISTER API
     const endpoint = isLogin ? "login" : "register";
 
-    
     const response = await fetch(
       `http://localhost:5000/api/auth/${endpoint}`,
       {
@@ -57,7 +136,6 @@ const handleSubmit = async (e) => {
     const data = await response.json();
     if (!response.ok) throw new Error(data.message || "Access Denied");
 
-    // ✅ THIS IS THE KEY LINE (updates Navbar instantly)
     login(data.token, data.user);
 
     setMessage({
@@ -79,7 +157,6 @@ const handleSubmit = async (e) => {
     setIsLoading(false);
   }
 };
-
 
 
   return (
